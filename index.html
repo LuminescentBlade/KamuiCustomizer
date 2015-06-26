@@ -1,0 +1,52 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<title>Kamui Customizer</title>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/kamooi.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/kamooi.css">
+	</head>
+	<body>
+		<div id="loader"><div id="loaderinner"></div></div>
+		<div id="title">Kamui Customizer</div>
+		<div id="kamooihub">
+			<canvas id="kamooicanvas" width="256px" height="256px"></canvas>
+		</div>
+		<div id="controls">
+			<div class="controlblock">
+				<button class="left kamooimenu" onclick="backward('kamui');">&#9664;</button>
+				<div class="itemlabel" id="kamooi"></div>
+				<button class="right kamooimenu" onclick="forward('kamui');">&#9654;</button>
+			</div>
+			<div class="controlblock">	
+				<button class="left kamooimenu" onclick="backward('face');">&#9664;</button>
+				<div class="itemlabel" id="face"></div>
+				<button class="right kamooimenu" onclick="forward('face');">&#9654;</button>
+			</div>
+			<div class="controlblock">	
+				<button class="left kamooimenu" onclick="backward('hair');">&#9664;</button>
+				<div class="itemlabel" id="hair"></div>
+				<button class="right kamooimenu" onclick="forward('hair');">&#9654;</button>
+			</div>
+			<div class="controlblock">	
+				<button class="left kamooimenu" onclick="backward('color');">&#9664;</button>
+				<div class="itemlabel" id="color"></div>
+				<button class="right kamooimenu" onclick="forward('color');">&#9654;</button>
+			</div>
+			<div class="controlblock">	
+				<button class="left kamooimenu" id="clipb" onclick="backward('hairclip');">&#9664;</button>
+				<div class="itemlabel" id="clip"></div>
+				<button class="right kamooimenu" id="clipf" onclick="forward('hairclip');">&#9654;</button>
+			</div>
+			<div class="controlblock">	
+				<button class="left kamooimenu" onclick="backward('features');">&#9664;</button>
+				<div class="itemlabel" id="features"></div>
+				<button class="right kamooimenu" onclick="forward('features');" download="my-file-name.png">&#9654;</button>
+			</div>
+		</div>
+		<div class="instr">
+			To Export, right click on the canvas (Chrome and Firefox only) and click "Save Image As".
+		</div>
+	</body>
+	<footer>Site by <a href="http://luminescentblade.tumblr.com/">LuminescentBlade</a></footer>
+</html>

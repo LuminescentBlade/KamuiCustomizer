@@ -1,0 +1,156 @@
+@font-face {
+    font-family: QSans;
+    src: url(fonts/QuattrocentoSans.ttf);
+}
+
+@font-face {
+    font-family: Trykker;
+    src: url(fonts/Trykker-Regular.ttf);
+}
+
+body{
+	background-color:#303637;
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	font-family: QSans;
+	color: #ffffff;
+}
+canvas{
+	position:relative;
+    left:0px;
+    top:0px;
+}
+
+#haircanvas{
+	z-index:2;
+}
+
+#controls{
+	width:256px;
+	margin:0 auto;
+}
+#title{
+	width:60%;
+	text-align:center;
+	height:auto;
+	font-size:2.5em;
+	margin:0 auto;
+	margin-top: 50px;
+	font-family: Trykker;
+}
+
+#kamooihub{
+	width:256px;
+	height:256px;
+	margin:0 auto;
+	margin-top: 10px;
+	margin-bottom:10px;
+	border: 3px solid #151616;
+	background-color: #7c8688;
+}
+
+#loader{
+	position:fixed;
+	background-color:#303637;
+	width:100%;
+	height:100%;
+	z-index:1000;
+	top:0;
+	left:0;
+}
+
+#loaderinner{
+	width:60%;
+	font-size:3em;
+	margin:0 auto;
+	text-align: center;
+	margin-top: 256px;	
+}
+
+#loaderinner span{
+	color:#58a3b6;
+}
+.controlblock{
+	width:200px;
+	margin:0 auto;	
+	display:block;
+	height:25px;
+	padding:0;
+	box-sizing:border-box;
+	margin-bottom:5px;
+}
+.itemlabel{
+	width:150px;
+	height:25px;
+	float: left;
+	text-align: center;
+	box-sizing:border-box;
+	background-color:#535f65;
+	color:#FFFFFF;
+	padding-top: 3px;
+	box-sizing:border-box;
+}
+.instr{
+	width:60%;
+	color: #FFFFFF;
+	text-align: center;
+	margin:0 auto;
+	margin-bottom:10px;
+}
+button.kamooimenu{
+	float: left;
+	margin:0;
+	width: 25px;
+	height:25px;
+	padding-left:7px;
+	padding-right:7px;
+	box-sizing:border-box;
+	background-color:#708995;
+	border:0px;
+	box-shadow: none;
+	color:#535f65;
+	text-shadow: 0px 1px 0px rgba(255,255,255,.5);
+}
+
+button.left{
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+}
+
+button.right{
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+}
+
+button:hover{
+	background-color:#549fc2;
+	color:#247083;
+}
+
+button:focus{
+	 border: none;
+    outline:none;
+}
+
+button:active{
+	background-color:#aaeafa;
+	color:#549fc2;
+}
+
+itemlabel.disabled{
+	background-color:#424C51;
+	color:#A0A6A8;
+}
+
+footer{
+	margin-top:50px;
+	font-size:0.8em;
+	text-align:center;
+}
+footer a{
+	color:#549fc2;
+}
+
+
