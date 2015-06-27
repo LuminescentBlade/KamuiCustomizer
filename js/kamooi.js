@@ -16,7 +16,7 @@ var currentClip = 0;
 var currentFeature = 0;
 var currentColor = 0;
 
-var colorList = ["#f8ebd4","#c84743","#d67854","#f3e1c5","#c0dd9d","#8fcac5","#b1c7e7","#e1aee4","#f6dfd8","#d3af99","#b2a69b","#b03c49","#ab614c","#e1cd9e","#829563","#438488","#5b637b","#946996","#eba19b","#927160","#615650","#e34a5a","#ea8e60","#e8cb7d","#95cc65","#95e3cc","#567ea5","#c580d8","#ea889f","#7d523c"];
+var colorList = ["#f8ebd4","#c84743","#d67854","#f7d3ae","#c0dd9d","#8fcac5","#b1c7e7","#e1aee4","#f6dfd8","#d3af99","#b2a69b","#b03c49","#ab614c","#e1cd9e","#829563","#438488","#5b637b","#946996","#eba19b","#927160","#615650","#e34a5a","#ea8e60","#e8cb7d","#95cc65","#95e3cc","#567ea5","#c580d8","#ea889f","#7d523c"];
 var targetnum = 0;
 var loadednum = 0;
 var kamooiList = [];
