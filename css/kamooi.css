@@ -139,7 +139,7 @@ button:active{
 	color:#549fc2;
 }
 
-itemlabel.disabled{
+.itemlabel.disabled{
 	background-color:#424C51;
 	color:#A0A6A8;
 }
