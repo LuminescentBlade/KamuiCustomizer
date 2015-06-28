@@ -1,52 +1,89 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Kamui Customizer</title>
-		<script src="js/jquery-1.11.3.min.js"></script>
-		<script src="js/kamooi.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/kamooi.css">
-	</head>
-	<body>
-		<div id="loader"><div id="loaderinner"></div></div>
-		<div id="title">Kamui Customizer</div>
-		<div id="kamooihub">
-			<canvas id="kamooicanvas" width="256px" height="256px"></canvas>
+<head>
+<title>Kamui Customizer</title>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/kamooi.js"></script>
+<link rel="stylesheet" type="text/css" href="css/kamooi.css">
+</head>
+<body>
+	<div id="loader">
+		<div id="loaderinner"></div>
+	</div>
+	<div id="title">Kamui Customizer</div>
+	<div class="controls"> 
+		&#183; <span class="help" id="algo" onclick="toggleFilter();"></span> &#183; <span class="help" id="help" onclick="openHelp();">Having Issues?</span> &#183;
+	</div>
+	<div id="kamooihub">
+		<canvas id="kamooicanvas" width="256px" height="256px"></canvas>
+	</div>
+	<span class="help" id="algo" onclick="toggleFilter();"></span>
+	<div class="instr">To Export, right click on the canvas (Chrome
+		and Firefox only) and click "Save Image As".</div>
+	<div class="controls">
+		<div class="controlblock">
+			<button class="left kamooimenu" onclick="backward('kamui');">&#9664;</button>
+			<div class="itemlabel" id="kamooi"></div>
+			<button class="right kamooimenu" onclick="forward('kamui');">&#9654;</button>
 		</div>
-		<div id="controls">
-			<div class="controlblock">
-				<button class="left kamooimenu" onclick="backward('kamui');">&#9664;</button>
-				<div class="itemlabel" id="kamooi"></div>
-				<button class="right kamooimenu" onclick="forward('kamui');">&#9654;</button>
-			</div>
-			<div class="controlblock">	
-				<button class="left kamooimenu" onclick="backward('face');">&#9664;</button>
-				<div class="itemlabel" id="face"></div>
-				<button class="right kamooimenu" onclick="forward('face');">&#9654;</button>
-			</div>
-			<div class="controlblock">	
-				<button class="left kamooimenu" onclick="backward('hair');">&#9664;</button>
-				<div class="itemlabel" id="hair"></div>
-				<button class="right kamooimenu" onclick="forward('hair');">&#9654;</button>
-			</div>
-			<div class="controlblock">	
-				<button class="left kamooimenu" onclick="backward('color');">&#9664;</button>
-				<div class="itemlabel" id="color"></div>
-				<button class="right kamooimenu" onclick="forward('color');">&#9654;</button>
-			</div>
-			<div class="controlblock">	
-				<button class="left kamooimenu" id="clipb" onclick="backward('hairclip');">&#9664;</button>
-				<div class="itemlabel" id="clip"></div>
-				<button class="right kamooimenu" id="clipf" onclick="forward('hairclip');">&#9654;</button>
-			</div>
-			<div class="controlblock">	
-				<button class="left kamooimenu" onclick="backward('features');">&#9664;</button>
-				<div class="itemlabel" id="features"></div>
-				<button class="right kamooimenu" onclick="forward('features');" download="my-file-name.png">&#9654;</button>
-			</div>
+		<div class="controlblock">
+			<button class="left kamooimenu" onclick="backward('face');">&#9664;</button>
+			<div class="itemlabel" id="face"></div>
+			<button class="right kamooimenu" onclick="forward('face');">&#9654;</button>
 		</div>
-		<div class="instr">
-			To Export, right click on the canvas (Chrome and Firefox only) and click "Save Image As".
+		<div class="controlblock">
+			<button class="left kamooimenu" onclick="backward('hair');">&#9664;</button>
+			<div class="itemlabel" id="hair"></div>
+			<button class="right kamooimenu" onclick="forward('hair');">&#9654;</button>
 		</div>
-	</body>
-	<footer>Site by <a href="http://luminescentblade.tumblr.com/">LuminescentBlade</a></footer>
+		<div class="controlblock">
+			<button class="left kamooimenu" onclick="backward('color');">&#9664;</button>
+			<div class="itemlabel" id="color"></div>
+			<button class="right kamooimenu" onclick="forward('color');">&#9654;</button>
+		</div>
+		<div class="controlblock">
+			<button class="left kamooimenu" id="clipb"
+				onclick="backward('hairclip');">&#9664;</button>
+			<div class="itemlabel" id="clip"></div>
+			<button class="right kamooimenu" id="clipf"
+				onclick="forward('hairclip');">&#9654;</button>
+		</div>
+		<div class="controlblock">
+			<button class="left kamooimenu" onclick="backward('features');">&#9664;</button>
+			<div class="itemlabel" id="features"></div>
+			<button class="right kamooimenu" onclick="forward('features');">&#9654;</button>
+		</div>
+	</div>
+
+	<div id="helpmenu">
+		<div id="helpinner">
+			<img id="close" src="img/x.png" width="25px" onclick="closeHelp();">
+			<h2>Having Issues?</h2>
+			<p>
+				If you're encountering any sort of rendering issue with the
+				portraits, try setting the Filter to Hard Light (toggle under
+				title). If that fails to work in-browser, please send me a message
+				over at <a href="http://luminescentblade.tumblr.com/ask" target="_blank">Tumblr</a>
+				with your browser type (make sure to upgrade your browser to the
+				latest version!) and a description and/or screenshot of the problem,
+				and I will try to solve it to the best of my ability.
+			</p>
+
+			<p>
+				If you want to use it before I push the next fix, please head over
+				to <a href="https://github.com/LuminescentBlade/KamuiCustomizer" target="_blank">GitHub</a>
+				and download a version of the source code. That will allow you to use the app locally.
+			</p>
+			<p> On Line 6 there should be:
+				<pre>var currentFilter = "overlay";</pre>
+				Change "overlay" to "hard light" and refresh.
+			</p>
+			
+			<button class="helpbutton" onclick="closeHelp();">Close</button>
+		</div>
+	</div>
+</body>
+<footer>
+	Site by <a href="http://luminescentblade.tumblr.com/" target="_blank">LuminescentBlade</a>
+</footer>
 </html>

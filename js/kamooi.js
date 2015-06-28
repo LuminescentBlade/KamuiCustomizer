@@ -2,12 +2,10 @@ var canvas;
 var ctx;
 var tintcanvas;
 var ttx;
-var	haircanvas;
-var htx;
 var hexChart = {};
 var currentFilter = "overlay";
 var isFirefox = typeof InstallTrigger !== 'undefined';  
-var alg = (isFirefox)?"alg2":"alg1";
+
 
 var currentKamooi = 0; //0 = femuireg 1 = femuibig 2 = mamuireg 3 = mamuibig
 var currentHair = 0;
@@ -31,10 +29,10 @@ function initCanvas(){
 	tintcanvas.width = 256;
 	tintcanvas.height = 256;
 	ttx = tintcanvas.getContext('2d');
-	haircanvas = document.createElement('canvas');
-	haircanvas.width = 256;
-	haircanvas.height = 256;
-	htx = haircanvas.getContext('2d');
+//	haircanvas = document.createElement('canvas');
+//	haircanvas.width = 256;
+//	haircanvas.height = 256;
+//	htx = haircanvas.getContext('2d');
 }
 
 
@@ -167,8 +165,7 @@ function backward(param){
 }
 
 function loadCurrentKamooi(){
-	ctx.clearRect(0,0,256,256);
-
+	ctx.clearRect(0,0,255,255);
 	var kamooi = kamooiList[currentKamooi];
 
 	ctx.drawImage(kamooi.faces[currentFace],0, 0);
@@ -195,7 +192,7 @@ function loadCurrentKamooi(){
 function drawHair(img){
 	ttx.clearRect(0,0,255,255);
 	if(currentFilter === "hard-light"){	
-		ttx.globalCompositeOperation = "normal";
+		ttx.globalCompositeOperation = "source-over";
 		ttx.drawImage(img, 0, 0);
 		ttx.fillStyle = colorList[currentColor];
 		ttx.fillRect(0,0,256,256);
@@ -206,42 +203,22 @@ function drawHair(img){
 
 		ctx.drawImage(tintcanvas, 0, 0);
 	}
-	else if(alg === "alg1"){
-		ttx.globalCompositeOperation = "normal";
+	else if(currentFilter === "overlay"){
+		ttx.globalCompositeOperation = "source-over";
 		ttx.drawImage(img, 0, 0);
 		ttx.fillStyle = colorList[currentColor];
 		ttx.fillRect(0,0,256,256);
 		ttx.globalCompositeOperation = "destination-atop";
 		ttx.drawImage(img, 0, 0);
+		ttx.globalCompositeOperation = "source-over";
 
-		ctx.globalCompositeOperation = "normal";
+		ctx.globalCompositeOperation = "source-over";
 		ctx.drawImage(img, 0, 0);
 		ctx.globalCompositeOperation = "overlay";
 		ctx.drawImage(tintcanvas, 0, 0);
-		ctx.globalCompositeOperation = "normal";
+		ctx.globalCompositeOperation = "source-over";
 	}
-	else if(alg ==="alg2"){
-		ctx.globalCompositeOperation = "normal";
-
-
-		ttx.globalCompositeOperation = "normal";
-		ttx.fillStyle = colorList[currentColor];
-		ttx.fillRect(0,0,256,256);
-		ttx.globalCompositeOperation = "destination-atop";
-		ttx.drawImage(img,0,0);
-
-		htx.clearRect(0,0,255,255);
-		htx.globalCompositeOperation = "normal";
-		htx.drawImage(img,0,0);
-		htx.globalCompositeOperation = "overlay";
-		htx.drawImage(tintcanvas, 0, 0);
-		htx.globalCompositeOperation = "normal";
-
-		ctx.drawImage(haircanvas, 0, 0);
-		ctx.globalCompositeOperation = "normal";	
-	}
-
-	ttx.globalCompositeOperation = "normal";
+	ttx.globalCompositeOperation = "source-over";
 	ttx.clearRect(0,0,255,255);
 }
 
@@ -331,9 +308,45 @@ function changeMenu(param){
 	}
 }
 
+function setFilterButton(){
+	var h = "Current Filter: ";
+	if(currentFilter === "overlay") h += "Overlay";
+	else h += "Hard Light";
+	$("#algo").html(h);
+}
+
+function toggleFilter(){
+	if(currentFilter === "overlay") currentFilter = "hard-light";
+	else currentFilter = "overlay";
+	setFilterButton();
+	loadCurrentKamooi();
+}
+
+function setupHelp(){
+	var h = $("#helpinner");
+	$("#helpinner").css("top",-h.outerHeight());
+	$("#helpmenu").addClass("invis");
+}
+
+function closeHelp(){
+	var h = $("#helpinner");
+	$("#helpinner").animate({top:-h.outerHeight()},{complete:function(){
+		$("#helpmenu").addClass("invis");
+	}},"fast");
+}
+
+function openHelp(){
+	$("#helpmenu").removeClass("invis");
+	var h = $("#helpinner");
+	$("#helpinner").animate({top:0},"fast");
+}
+
+
 $(window).load(function(){
+	setupHelp();
 	initHexChart();
 	initCanvas();
+	setFilterButton();
 	changeMenu("kamui");
 	changeMenu("face");
 	changeMenu("hair");
