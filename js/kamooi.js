@@ -315,7 +315,7 @@ function changeMenu(param){
 }
 
 function setFilterButton(){
-	var h = "Current Filter: ";
+	var h = "Current Blend Mode: ";
 	if(currentFilter === "overlay") h += "Overlay";
 	else h += "Hard Light";
 	$("#algo").html(h);
