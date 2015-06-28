@@ -12,9 +12,11 @@ var currentHair = 0;
 var currentFace = 0;
 var currentClip = 0;
 var currentFeature = 0;
-var currentColor = 0;
+var currentColor = 3;
 
-var colorList = ["#f8ebd4","#c84743","#d67854","#f7d3ae","#c0dd9d","#8fcac5","#b1c7e7","#e1aee4","#f6dfd8","#d3af99","#b2a69b","#b03c49","#ab614c","#e1cd9e","#829563","#438488","#5b637b","#946996","#eba19b","#927160","#615650","#e34a5a","#ea8e60","#e8cb7d","#95cc65","#95e3cc","#567ea5","#c580d8","#ea889f","#7d523c"];
+var colorList = ["#F1EFE6","#C35654","#D1876A","#E9D7C1","#A6D1A2","#7AB6C0","#90A6CF","#C9A0D1","#F9D7DB","#C1A798","#9FA0A1","#9B3F42","#996049","#CABFA2","#698059","#377781","#4A5877","#81608A","#EAAFB2","#817062","#5A5850","#E75860","#F1976E","#E9D699","#89CE84","#7FE0DB","#4881B3","#AB7ED3","#F28FA9","#69473D"]; 
+	//			["#D7BFBB","#AD4840","#B96850","#ceae9d","#8EA57C","#669897","#8188A6","#B383A9","#DEADAF","#AA867C","#907C82","#8B3035","#815039","#B09884","#616844","#377881","#41485F","#734F6F","#CD8588","#6F554F","#4C4041","#CB4856","#D8795D","#C9AF77","#76A56A","#74AFB1","#3E6A8D","#9966A9","#D17786","#604133"];
+	//			["#f8ebd4","#c84743","#d67854","#f7d3ae","#c0dd9d","#8fcac5","#b1c7e7","#e1aee4","#f6dfd8","#d3af99","#b2a69b","#b03c49","#ab614c","#e1cd9e","#829563","#438488","#5b637b","#946996","#eba19b","#927160","#615650","#e34a5a","#ea8e60","#e8cb7d","#95cc65","#95e3cc","#567ea5","#c580d8","#ea889f","#7d523c"];
 var targetnum = 0;
 var loadednum = 0;
 var kamooiList = [];
@@ -191,8 +193,10 @@ function loadCurrentKamooi(){
 }
 
 function drawHair(img){
+	
 	ttx.clearRect(0,0,255,255);
 	if(currentFilter === "hard-light"){	
+		ctx.drawImage(img, 0, 0);
 		ttx.globalCompositeOperation = "source-over";
 		ttx.drawImage(img, 0, 0);
 		ttx.fillStyle = colorList[currentColor];
@@ -205,7 +209,7 @@ function drawHair(img){
 		ctx.drawImage(tintcanvas, 0, 0);
 	}
 	else if(currentFilter === "overlay"){
-		
+		ctx.drawImage(img, 0, 0);
 		ttx.globalCompositeOperation = "source-over";
 		ttx.drawImage(img, 0, 0);
 		ttx.fillStyle = colorList[currentColor];
