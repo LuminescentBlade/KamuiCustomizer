@@ -169,6 +169,7 @@ function loadCurrentKamooi(){
 	var kamooi = kamooiList[currentKamooi];
 
 	ctx.drawImage(kamooi.faces[currentFace],0, 0);
+	ctx.drawImage(kamooi.faces[currentFace],0, 0);
 	if(currentFeature < 12){
 		ctx.drawImage(kamooi.features[currentFeature],0,0);
 	}
@@ -181,7 +182,7 @@ function loadCurrentKamooi(){
 		$("#clipf").prop("disabled",false);
 		if(currentClip < 5)
 			ctx.drawImage(kamooi.hairclip[currentClip],128,32);
-
+			ctx.drawImage(kamooi.hairclip[currentClip],128,32);
 	}else{
 		$("#clipb").prop("disabled",true);
 		$("#clipf").prop("disabled",true);
@@ -204,6 +205,7 @@ function drawHair(img){
 		ctx.drawImage(tintcanvas, 0, 0);
 	}
 	else if(currentFilter === "overlay"){
+		
 		ttx.globalCompositeOperation = "source-over";
 		ttx.drawImage(img, 0, 0);
 		ttx.fillStyle = colorList[currentColor];
