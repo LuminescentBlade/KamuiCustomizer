@@ -194,7 +194,7 @@ function loadCurrentKamooi(){
 
 function drawHair(img){
 	
-	ttx.clearRect(0,0,255,255);
+	ttx.clearRect(0,0,256,256);
 	if(currentFilter === "hard-light"){	
 		ctx.drawImage(img, 0, 0);
 		ttx.globalCompositeOperation = "source-over";
