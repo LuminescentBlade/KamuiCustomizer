@@ -183,8 +183,8 @@ function loadCurrentKamooi(){
 		$("#clipb").prop("disabled",false);
 		$("#clipf").prop("disabled",false);
 		if(currentClip < 5)
-			ctx.drawImage(kamooi.hairclip[currentClip],128,32);
-			ctx.drawImage(kamooi.hairclip[currentClip],128,32);
+			ctx.drawImage(kamooi.hairclip[currentClip],128,27);
+			ctx.drawImage(kamooi.hairclip[currentClip],128,27);
 	}else{
 		$("#clipb").prop("disabled",true);
 		$("#clipf").prop("disabled",true);
@@ -194,7 +194,7 @@ function loadCurrentKamooi(){
 
 function drawHair(img){
 	
-	ttx.clearRect(0,0,255,255);
+	ttx.clearRect(0,0,256,256);
 	if(currentFilter === "hard-light"){	
 		ctx.drawImage(img, 0, 0);
 		ttx.globalCompositeOperation = "source-over";
