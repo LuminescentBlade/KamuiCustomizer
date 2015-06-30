@@ -183,8 +183,8 @@ function loadCurrentKamooi(){
 		$("#clipb").prop("disabled",false);
 		$("#clipf").prop("disabled",false);
 		if(currentClip < 5)
-			ctx.drawImage(kamooi.hairclip[currentClip],128,26);
-			ctx.drawImage(kamooi.hairclip[currentClip],128,26);
+			ctx.drawImage(kamooi.hairclip[currentClip],128,27);
+			ctx.drawImage(kamooi.hairclip[currentClip],128,27);
 	}else{
 		$("#clipb").prop("disabled",true);
 		$("#clipf").prop("disabled",true);
