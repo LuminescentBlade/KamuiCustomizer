@@ -81,6 +81,37 @@ canvas{
 	padding:0;
 	box-sizing:border-box;
 	margin-bottom:5px;
+	position:relative;
+
+}
+.controlblock #colorpicker{
+	position: absolute;
+	bottom:-35px;
+	left:205px;
+	z-index: 2;
+	width: 200px;
+	height: 70px;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #7c8688;
+}
+
+.colorblock{
+	background-color: #ffccff;
+	box-shadow: 1px 1px 1px 0 rgba(64,64,64,0.3);
+	margin: 2px;
+	width: 16px;
+	height: 16px;
+	border-radius: 2px;
+	box-sizing:border-box;
+	display: inline-block;
+	cursor: pointer;
+}
+.colorblock.selected{
+	border: 1px solid #eebb00;
+}
+#color{
+	cursor: pointer;
 }
 .itemlabel{
 	width:150px;
@@ -99,6 +130,10 @@ canvas{
 	text-align: center;
 	margin:0 auto;
 	margin-bottom:10px;
+	font-size: 0.9em;
+}
+.instr.smol{
+	font-size: 0.8em;
 }
 button.kamooimenu{
 	float: left;
@@ -136,7 +171,7 @@ button:focus{
 }
 
 button.kamooimenu:active{
-	background-color:#aaeafa;
+	background-color:#5ba4c6;
 	color:#549fc2;
 }
 
@@ -216,6 +251,12 @@ button.helpbutton{
 	font-size:1.1em;
 	border-radius:10px;
 	padding: 0 10px 0 10px;
+	margin: 5px;
+	
+}
+button.helpbutton.smol{
+	height:25px;
+	font-size: 0.8em;
 }
 button.helpbutton:hover{
 	background-color:#94d3dc;
@@ -229,13 +270,24 @@ button.helpbutton.dark{
 	color:#ffffff;
 }
 
+button.helpbutton.dark.on{
+	background-color:#d5733e;
+}
+
+
 button.helpbutton.dark:hover{
 	background-color:#549fc2;
 }
+
 button.helpbutton.dark:active{
-	background-color:#aaeafa;
+	background-color:#5ba4c6;
+	
 }
 
 pre{
 	color: #f6cc8b;
+}
+
+.hidden{
+	display:none;
 }
