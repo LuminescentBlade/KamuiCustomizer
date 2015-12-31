@@ -14,7 +14,7 @@ var currentExp = 0;
 var currentClip = 0;
 var blushing = false;
 var sweating = true;
-var currentFeature = 0;
+var currentFeature = 12;
 var currentColor = 3;
 var colorpicker;
 var colorpickeropen = false;
@@ -223,12 +223,9 @@ function backward(param){
 function loadCurrentKamooi(){
 	ctx.clearRect(0,0,255,255);
 	var kamooi = kamooiList[currentKamooi];
-
+	
 	ctx.drawImage(kamooi.faces[currentFace][currentExp],0, 0);
 	ctx.drawImage(kamooi.faces[currentFace][currentExp],0, 0);
-	if(currentFeature < 12){
-		ctx.drawImage(kamooi.features[currentFeature],0,0);
-	}
 	
 	if(kamooi.gender === "fem"){
 		if(kamooi.size === "reg"){
@@ -249,7 +246,11 @@ function loadCurrentKamooi(){
 		}
 	}
 
-		
+
+	if(currentFeature < 12){
+		ctx.drawImage(kamooi.features[currentFeature],0,0);
+	}
+	
 	var img = kamooi.hair[currentHair];
 	drawHair(img);
 	
