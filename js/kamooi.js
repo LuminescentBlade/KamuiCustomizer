@@ -13,7 +13,7 @@ var currentFace = 0;
 var currentExp = 0;
 var currentClip = 0;
 var blushing = false;
-var sweating = true;
+var sweating = false;
 var currentFeature = 12;
 var currentColor = 3;
 var colorpicker;
@@ -26,6 +26,7 @@ var loadednum = 0;
 var kamooiList = [];
 var expressions = ["normal", "smile", "pained", "angry", "indignant"];
 var exp_label = ["Default", "Smiling", "Pained", "Angry", "Indignant"];
+
 
 initKamooi();
 
@@ -230,19 +231,21 @@ function loadCurrentKamooi(){
 	if(kamooi.gender === "fem"){
 		if(kamooi.size === "reg"){
 			if(blushing) ctx.drawImage(kamooi.blush,96,75);
-			//if(sweating) ctx.drawImage(kamooi.sweat,135,95);
+			if(sweating) ctx.drawImage(kamooi.sweat,131,101);
 		}
 		else{
 			if(blushing) ctx.drawImage(kamooi.blush,96,64);
-			//if(sweating) ctx.drawImage(kamooi.sweat,110,95);	
+			if(sweating) ctx.drawImage(kamooi.sweat,130,85);	
 		}
 	}
 	else{
 		if(kamooi.size === "reg"){
 			if(blushing) ctx.drawImage(kamooi.blush,90,45);
+			if(sweating) ctx.drawImage(kamooi.sweat,133,79);
 		}
 		else{
 			if(blushing) ctx.drawImage(kamooi.blush,87,42);	
+			if(sweating) ctx.drawImage(kamooi.sweat,134,70);
 		}
 	}
 
@@ -400,18 +403,37 @@ function openHelp(){
 }
 
 function toggleBlush(){
-	blushbtn = $("#blushbtn");
 	blushbtn.toggleClass("on");
 	if(blushing){
 		blushbtn.html("Blush Off");
 		blushing = false;
 	} 
 	else{
-		$("#blushbtn").html("Blush On");
+		blushbtn.html("Blush On");
 		blushing = true;
 	}
 	loadCurrentKamooi();	
 }
+
+function toggle(btn,opt){
+	btn.toggleClass("on");
+	var cond = (opt ==="Sweat")?sweating:blushing;
+	
+	if(cond){
+		btn.html(opt+" Off");
+		if(opt ==="Sweat") sweating = false;
+		else if (opt ==="Blush") blushing = false;
+		
+	} 
+	else{
+		btn.html(opt+" On");
+		if(opt ==="Sweat") sweating = true;
+		else if (opt ==="Blush") blushing = true;
+	}
+	loadCurrentKamooi();	
+}
+
+
 
 /*function hairfill(img,color){
 	ttx.clearRect(0,0,256,256);
@@ -470,12 +492,22 @@ function filter(color){
 	
 }
 
-$(window).load(function(){
-	setupHelp();
-	//initHexChart();
-	initCanvas();
-	initColorPicker();
-	setFilterButton();
+function randomize(){
+	currentKamooi = Math.floor(Math.random()*4);
+	currentHair = Math.floor(Math.random()*12);
+	currentFace = Math.floor(Math.random()*7);
+	currentExp = Math.floor(Math.random()*5);
+	currentClip = (currentKamooi < 2)?Math.floor(Math.random()*5):5;
+	currentFeature = Math.floor(Math.random()*13);
+	currentColor = Math.floor(Math.random()*30);
+	
+	loadCurrentKamooi();
+	changeAllMenu();
+	
+}
+
+
+function changeAllMenu(){
 	changeMenu("kamui");
 	changeMenu("face");
 	changeMenu("hair");
@@ -483,8 +515,26 @@ $(window).load(function(){
 	changeMenu("features");
 	changeMenu("color");
 	changeMenu("expression");
+}
+$(window).load(function(){
+	setupHelp();
+	//initHexChart();
+	initCanvas();
+	initColorPicker();
+	setFilterButton();
+	changeAllMenu();
 //	initKamooi();
-	loadCurrentKamooi();	
+	loadCurrentKamooi();
+	
+	var blushbtn = $("#blushbtn");
+	var sweatbtn = $("#sweatbtn");
+	
+	blushbtn.on("click",function(){
+		toggle(blushbtn,"Blush")
+	});
+	sweatbtn.click(function(){
+		toggle(sweatbtn,"Sweat");
+	});
 });
 
 function toggleHC(){
